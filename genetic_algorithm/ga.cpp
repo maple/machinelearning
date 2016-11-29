@@ -4,19 +4,20 @@
 
 /*
   reference : a book : Robot Intelligence
+  how to compile: $ g++ -Wall filename.cpp -o executablename
  */
 
 int main()
 {
 	int **population;    // 個体集合
-	int num;
-	int length;
+	int num;             // 個体数
+	int length;          // 遺伝子長
 	int i, j;
 
 	num = 10;
 	length = 5;
 
-	population = new int *[num];
+	population = new int*[num];
 	for(i=0 ; i < num ; i ++){
 		population[i] = new int[length];
 	}
