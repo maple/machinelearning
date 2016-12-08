@@ -15,6 +15,7 @@ int main()
 	num = 10;
 	length = 5;
 	mutation_rate = 50;
+
 	population = new int*[num];
 	for (i=0; i<num; i++){
 		population[i] = new int[length];
@@ -27,22 +28,23 @@ int main()
 	printf("population = \n");
 	for( i=0; i<num; i++) {
 		for( j=0; j<length; j++){
-			population[i][j] = i%2;
+			population[i][j] = i %2;
 			printf("%d", population[i][j]);
-		}printf("\n");
+		}printf(" ");
 	}
 
 	for( i=0; i<num; i++){
 		mutation (mutation_rate, length, i, population);
 	}
 
-	printf("population = \n");
+	printf("\npopulation = \n");
 	for( i=0; i<num; i++){
 		for( j=0; j<length; j++){
 			printf("%d", population[i][j]);
 		}
-		printf("\n");
+		printf(" ");
 	}
+	printf("\n");
 
 	for( i=0; i<num; i++){
 		delete []population[i];
