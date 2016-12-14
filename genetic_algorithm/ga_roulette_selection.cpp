@@ -32,7 +32,7 @@ int main()
 			printf("%d", population[i][j]);
 		}
 		fitness[i] = calc_fitness(i, length, population);
-		printf("fitness = %d\n", fitness[i]);
+		printf(" fitness = %d\n", fitness[i]);
 	}
 
 	for ( k=0; k<10; k++) {
@@ -42,7 +42,7 @@ int main()
 			for(j=0; j<length; j++){
 				printf("%d", population[i][j]);
 			}
-			printf("%d \n", fitness[i]);
+			printf(" %d \n", fitness[i]);
 		}
 	}
 
@@ -89,7 +89,7 @@ void roulette_selection (int num, int length, int **population, int *fitness)
 	roulette[0] = (double)fitness[0] / (double) sum_fitness;
 	ac_roulette[0] = roulette[0];
 	int calc_fitness(int individual, int length, int **population);
-	printf ("roulette[%d] = %1f  ac_roulette[%d] %1f \n", 0, roulette[0], 0, ac_roulette[0]);
+	printf ("roulette[%d] = %1f  ac_roulette[%d] = %1f \n", 0, roulette[0], 0, ac_roulette[0]);
 
 	for( i= 1; i<num; i++){
 		roulette[i] = (double)fitness[i] / (double)sum_fitness;
