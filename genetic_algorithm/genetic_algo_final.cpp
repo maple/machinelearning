@@ -146,7 +146,7 @@ void one_point_crossover(int crossover_rate, int mutation_rate, int num, int len
 	for ( i=0; i<(num-1) ; i=i+2 ){
 		if(rand() % 100<crossover_rate){
 			cross_point = rand()%(length-1) + 1;
-			// printf(*cross_point = %d \n", cross_point);
+			// printf("cross_point = %d \n", cross_point);
 			for(j=0; j<cross_point; j++){
 				population[i][j] = pair[i+1][j];
 				population[i+1][j] = pair[i][j];
@@ -166,5 +166,68 @@ void one_point_crossover(int crossover_rate, int mutation_rate, int num, int len
 			}
 		}
 	}
+}
+
+void mutation (int mutation_rate, int length, int individual, int **population){
+	int i;
+
+	for( i=0; i<length; i++){
+		if(mutation_rate > rand() % 100){
+			population[individual][i] = !population[individual][i];
+		}
+	}
+}
+
+void pairing (int num, int length, int **population, int **pair){
+	int *shuffle;
+	int r;
+	int i, j;
+	int temp;
+
+	shuffle = new int[num];
+	for( i=0; i<num; i++){
+		shuffle[i] = i;
+	}
+	for( i=0; i<num; i++){
+		r = rand()%num;
+		temp=shuffle[r];
+		shuffle[r] = shuffle[i];
+		shuffle[i] = temp;
+	}
+
+	// // check the value after shuffle
+	// for (i=0; i<num; i++){
+	// 	printf("shuffle[%d]=%d\n", i, shuffle[i]);
+	// }
+
+	for( i=0; i<num; i++){
+		for(j=0; j<length; j++){
+			pair[i][j] = population[shuffle[i]][j];
+		}
+	}
+
+	// // to check values for debug.
+	// for(i = 0; i<num; i++){
+	// 	for( j=0; j<length; j++){
+	// 		printf("%d", population[i][j]):
+	// 	}
+	// 	printf(">>>");
+	// 	for( j=0; j<length; j++){
+	// 		printf("%d", pair[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+	
+}
+
+	
+double average_fitness(int num, int * fitness){
+	int i;
+	int sum = 0;
+
+	for( i=0; i<num; i++){
+		sum = sum + fitness[i];
+	}
+	return (double)sum /(double)num;
 }
 
