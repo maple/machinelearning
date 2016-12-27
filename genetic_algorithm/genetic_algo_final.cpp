@@ -29,7 +29,9 @@ int main()
 	mutation_rate = 5;
 
 	population = new int *[num];
+	pair = new int*[num];
 	for ( i=0; i<num; i++){
+		population[i] = new int [length];
 		pair[i] = new int [length];
 	}
 
@@ -42,6 +44,7 @@ int main()
 			population[i][j] = rand()%2;
 			printf("%d", population[i][j]);
 		}
+		printf("\n");
 	}
 
 	for (generation = 0; generation < max_generation; generation++){
@@ -53,7 +56,7 @@ int main()
 			for(j=0; j<length; j++){
 				printf ("%d", population[i][j]);
 			}
-			printf("fitness = %d\n", fitness[i]);
+			printf("  fitness = %d\n", fitness[i]);
 		}
 		if (average_fitness(num, fitness) > 45){
 			printf("The program is finished since target fitness value has reached\n");
